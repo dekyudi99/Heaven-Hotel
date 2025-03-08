@@ -58,9 +58,6 @@ class ListHotel extends StatelessWidget {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                // ScaffoldMessenger.of(context).showSnackBar(
-                //   SnackBar(content: Text("Clicked on ${hotel[index]["name"]}")),
-                // );
                 Navigator.push(context, MaterialPageRoute(builder: (context) => Detailhotel(
                   name: hotel[index]["name"],
                   deskripsi: hotel[index]["deskripsi"],

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:heaven_hotel/pages/listhotel.dart';
 import 'package:heaven_hotel/pages/pesanan.dart';
 import 'package:heaven_hotel/pages/profil.dart';
+import 'pages/formInput.dart';
+import 'pages/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -77,17 +79,26 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       drawer: Drawer(
         child: ListView(
           children: [
-            UserAccountsDrawerHeader(
-              accountName: Text("I Kadek Yudi Artana"),
-              accountEmail: Text("ikadekyudiartana602@gmail.com"),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage("assets/Ayano.jpeg"),
-              ),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/backProfil.jpeg"),
-                  fit: BoxFit.cover
-                )
+            GestureDetector(
+              onTap: () {
+                // Navigasi ke halaman Edit Profile
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Forminput()),
+                );
+              },
+              child: UserAccountsDrawerHeader(
+                accountName: Text("I Kadek Yudi Artana"),
+                accountEmail: Text("ikadekyudiartana602@gmail.com"),
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: AssetImage("assets/Ayano.jpeg"),
+                ),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/backProfil.jpeg"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
             ListTile(
@@ -111,6 +122,13 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 Navigator.pop(context);
               },
             ),
+            ListTile(
+              title: Text("Latihan-Tabel Penjualan"),
+              trailing: Icon(Icons.wifi),
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+              },
+            ),
           ],
         ),
       ),
@@ -119,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.list), label: "Pesanan"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Anda"),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
